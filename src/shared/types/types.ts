@@ -21,7 +21,6 @@ export interface IGetTasksData {
 export interface ITask {
     description: string
     title: string
-    completed: boolean
     status: number
     priority: number
     startDate: string

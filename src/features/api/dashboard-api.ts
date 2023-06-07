@@ -1,6 +1,6 @@
 import {axiosInstance} from "../../shared/api/axios";
-import {IDashboard, IGetTasksData, IResponseData, ITask} from "../../shared/types/types";
-import {ICreateDashboardData} from '../ui/dashboard-list/dashboard-list-types'
+import {IDashboard, IGetTasksData, IResponseData} from "../../shared/types/types";
+import {ICreateTaskData, ICreateDashboardData} from "./dasboard-api-types";
 
 export const DashboardApi = {
     /**
@@ -37,11 +37,18 @@ export const DashboardApi = {
      * @param dashboardId - ID тудулиста
      * @param title - название таски
      */
-    createDashboardTask: (dashboardId: string, title: string) => axiosInstance.post<IResponseData<ITask>>(`/todo-lists/${ dashboardId }/tasks`, { title }),
+    createDashboardTask: (dashboardId: string, title: string) => axiosInstance.post<IResponseData<ICreateTaskData>>(`/todo-lists/${ dashboardId }/tasks`, { title }),
     /**
      * Удаление таски
      * @param dashboardId - ID тудулиста
      * @param taskId - ID таски
      */
     deleteTask: (dashboardId: string, taskId: string) => axiosInstance.delete<IResponseData>(`/todo-lists/${ dashboardId }/tasks/${ taskId }`),
+    /**
+     *
+     * @param dashboardId
+     * @param taskId
+     */
+    updateTask: (dashboardId: string, taskId: string, title: string, status: boolean) =>
+        axiosInstance.put<IResponseData<ICreateTaskData>>(`/todo-lists/${ dashboardId }/tasks/${ taskId }`, { title, status })
 }

@@ -1,5 +1,4 @@
-import React from "react";
-
 export interface ICreateButtonProps {
-    onCreateValue: () => void
+    entityName: string
+    onCreateValue: (title: string) => void
 }

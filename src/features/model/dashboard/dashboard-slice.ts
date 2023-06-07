@@ -1,10 +1,9 @@
 import {createSlice, PayloadAction} from '@reduxjs/toolkit';
-import {IInitState} from "../../ui/dashboard-list/dashboard-list-types";
-import {IDashboard, ITask} from "../../../shared/types/types";
-import {ISetTasksToDashboard} from "./dashboard-types";
+import {IDashboard} from "../../../shared/types/types";
+import {ISetTasksToDashboard, IInitState} from "./dashboard-types";
 
 export const initialState: IInitState = {
-    dashboardlist: [],
+    dashboardList: [],
     tasks: {}
 };
 
@@ -14,18 +13,22 @@ export const DashboardSlice = createSlice({
     initialState,
     reducers: {
         setDashboardList: (state, action: PayloadAction<IDashboard[]>) => {
-            state.dashboardlist = action.payload
+            state.dashboardList = action.payload
         },
         setTasksToDashboard: (state, action: PayloadAction<ISetTasksToDashboard>) => {
             const {dashboardId, taskList} = action.payload
             state.tasks[dashboardId] = taskList
+        },
+        removeDashboardTasksTC: (state, action: PayloadAction<string>) => {
+            delete state.tasks[action.payload]
         }
     }
 });
 
 export const {
     setDashboardList,
-    setTasksToDashboard
+    setTasksToDashboard,
+    removeDashboardTasksTC
 } = DashboardSlice.actions;
 
 export const DashboardSliceReducer = DashboardSlice.reducer;

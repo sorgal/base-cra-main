@@ -1,6 +1,6 @@
 import {DashboardApi} from '../../api/dashboard-api'
 import {AppThunk} from '../../../store/store'
-import {setDashboardList, setTasksToDashboard} from './dashboard-slice'
+import {setDashboardList, setTasksToDashboard, removeDashboardTasksTC} from './dashboard-slice'
 
 export const getDashboardListTC = (): AppThunk => async (dispatch) => {
     try {
@@ -72,6 +72,20 @@ export const createTasksForDashboardTC = (dashboardId: string, title: string): A
 export const deleteTasksForDashboardTC = (dashboardId: string, taskId: string): AppThunk => async (dispatch) => {
     try {
         const res = await DashboardApi.deleteTask(dashboardId, taskId)
+        if (res.data.resultCode === 0) {
+            dispatch(getTasksForDashboardTC(dashboardId))
+            dispatch(removeDashboardTasksTC(dashboardId))
+        } else {
+            alert(res.data.messages[0])
+        }
+    } catch (e) {
+        alert(e)
+    }
+}
+
+export const updateTasksForDashboardTC = (dashboardId: string, taskId: string, title: string, status: boolean): AppThunk => async (dispatch) => {
+    try {
+        const res = await DashboardApi.updateTask(dashboardId, taskId, title, status)
         if (res.data.resultCode === 0) {
             dispatch(getTasksForDashboardTC(dashboardId))
         } else {
