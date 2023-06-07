@@ -1,6 +1,6 @@
 import {Action, combineReducers, configureStore, ThunkAction} from "@reduxjs/toolkit";
 import {CounterSliceReducer} from "../shared/ui/counter-slice";
-import {DashboardSliceReducer} from "../features/dashboard-list/dashboard-list-slice";
+import {DashboardSliceReducer} from "../features/model/dashboard/dashboard-slice";
 
 const rootReducer = combineReducers({
     counter: CounterSliceReducer,
