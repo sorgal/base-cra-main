@@ -1,10 +1,12 @@
 import {Action, combineReducers, configureStore, ThunkAction} from "@reduxjs/toolkit";
 import {CounterSliceReducer} from "../shared/ui/counter-slice";
 import {DashboardSliceReducer} from "../features/model/dashboard/dashboard-slice";
+import {AuthSliceReducer} from "../features/model/auth/auth-slice"
 
 const rootReducer = combineReducers({
     counter: CounterSliceReducer,
-    dashboard: DashboardSliceReducer
+    dashboard: DashboardSliceReducer,
+    user: AuthSliceReducer
 })
 
 export const store = configureStore({

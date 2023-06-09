@@ -1,4 +1,4 @@
-import {IDashboard, ITask} from "../../entities/types/types";
+import {IDashboard, ITask} from "../../../entities/types/types";
 
 export interface ICreateDashboardData {
     item: IDashboard

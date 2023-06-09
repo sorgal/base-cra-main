@@ -1,4 +1,4 @@
-import {DashboardApi} from '../../api/dashboard-api'
+import {DashboardApi} from '../../api/dashboard/dashboard-api'
 import {AppThunk} from '../../../store/store'
 import {setDashboardList, setTasksToDashboard, removeDashboardTasksTC} from './dashboard-slice'
 
