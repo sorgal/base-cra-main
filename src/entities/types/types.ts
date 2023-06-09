@@ -17,3 +17,9 @@ export interface ITask {
     order: number
     addedDate: string
 }
+
+export interface IUser {
+    id: number
+    email?: string
+    login?: string
+}
