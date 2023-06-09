@@ -1,4 +1,4 @@
-import {IDashboard, ITask} from "../../../shared/types/types";
+import {IDashboard, ITask} from "../../../entities/types/types";
 
 export interface ISetTasksToDashboard {
     dashboardId: string

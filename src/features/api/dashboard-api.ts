@@ -1,5 +1,6 @@
 import {axiosInstance} from "../../shared/api/axios";
-import {IDashboard, IGetTasksData, IResponseData} from "../../shared/types/types";
+import {IGetTasksData, IResponseData} from "../../shared/types/types";
+import {IDashboard} from "../../entities/types/types"
 import {ICreateTaskData, ICreateDashboardData} from "./dasboard-api-types";
 
 export const DashboardApi = {

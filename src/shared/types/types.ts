@@ -1,9 +1,4 @@
-export interface IDashboard {
-    id: string
-    title: string
-    addedDate: string
-    order: number
-}
+import {ITask} from "../../entities/types/types";
 
 export interface IResponseData<T = {}> {
     resultCode: number
@@ -11,22 +6,8 @@ export interface IResponseData<T = {}> {
     data: T
 }
 
-
 export interface IGetTasksData {
     items: ITask[]
     totalCount: number
     error: string | null
-}
-
-export interface ITask {
-    description: string
-    title: string
-    status: number
-    priority: number
-    startDate: string
-    deadline: string
-    id: string
-    todoListId: string
-    order: number
-    addedDate: string
 }
