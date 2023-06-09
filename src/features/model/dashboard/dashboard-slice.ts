@@ -1,5 +1,5 @@
 import {createSlice, PayloadAction} from '@reduxjs/toolkit';
-import {IDashboard} from "../../../shared/types/types";
+import {IDashboard} from "../../../entities/types/types";
 import {ISetTasksToDashboard, IInitState} from "./dashboard-types";
 
 export const initialState: IInitState = {

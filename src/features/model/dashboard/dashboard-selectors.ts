@@ -10,6 +10,14 @@ export const getDashboardList = createSelector(
 )
 
 export const getTaskList = createSelector(
-    getDashboardState,
+    [getDashboardState],
     (dashboard) => dashboard.tasks
 )
+
+export const getTaskListExt = (state: RootState, id: string) => {
+    const taskList = getTaskList(state)[id]
+    if (!taskList) {
+        return []
+    }
+    return[...taskList].sort(sortByOrder)
+}

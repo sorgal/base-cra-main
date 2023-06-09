@@ -1,10 +1,13 @@
-import React, {FC, useState} from "react";
+import React, {FC, memo, useState} from "react";
 import {deleteTasksForDashboardTC, updateTasksForDashboardTC} from "../../model/dashboard/dashboard-thunk";
 import {useAppDispatch} from "../../../shared/hooks/hooks";
 import {ITaskProps} from "./task-types";
 import {EditableSpan} from "../../../shared";
+import {IconButton, Space, Checkbox} from '@shturval/takelage-ui';
+// import {Checkbox} from 'antd'
+// import {CheckboxChangeEvent} from "antd/es/checkbox";
 
-export const TaskComponent: FC<ITaskProps> = ({
+export const TaskComponent: FC<ITaskProps> = memo(({
                                                 id,
                                                 title,
                                                 dashboardId,
@@ -22,16 +25,17 @@ export const TaskComponent: FC<ITaskProps> = ({
         dispatch(updateTasksForDashboardTC(dashboardId, id, value, !taskStatus))
     }
 
-    const handleCompletedChange = () => {
-        setTaskStatus(!taskStatus)
+    const handleCompletedChange = (value: boolean) => {
+        setTaskStatus(value)
         onUpdateTask(title)
     }
 
     return (
-        <div>
+        <Space size={'small'}>
+            <Checkbox value={taskStatus} onChange={handleCompletedChange} name={id}/>
             <EditableSpan onUpdateValue={onUpdateTask}>{title}</EditableSpan>
-            <input type="checkbox" checked={taskStatus} onChange={handleCompletedChange}/>
-            <button onClick={handleDeleteTask}>Delete Task</button>
-        </div>
+            {/*<input type="checkbox" checked={taskStatus} onChange={handleCompletedChange}/>*/}
+            <IconButton onClick={handleDeleteTask} iconName={'delete'} variant={'link'} title={'Delete Task'} />
+        </Space>
     )
-}
+})
